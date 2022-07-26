@@ -16,11 +16,12 @@ class ExportController extends Controller
 
     public function export(Request $req)
     {
+        // return $req;
         $rosterView = $req->has('rosterView') ? $req->input('rosterView') : false;
         $team = $req->has('team') ? $req->input('team') : false;
-        $player_stats = $req->has('playerstats') ? $req->input('playerstats') : false;
-        // $export_type = $req->input('exportType') ? $req->input('exportType') : 'csv';
-        $export_type = 'xml';
+        $player_stats = $req->has('player_stats') ? $req->input('player_stats') : false;
+        $export_type = $req->input('exportType') ? $req->input('exportType') : 'csv';
+        // $export_type = 'xml';
         $view = [];
         $heading = [];
         // $rosterView ? 
@@ -28,10 +29,13 @@ class ExportController extends Controller
             ->join('player_totals', 'roster.id', '=', 'player_totals.player_id');
 
         if ($req->has('position')) {
-            $mydata = $mydata->where('roster.pos', $req->input('position'));
+            $mydata = $mydata->where('roster.pos', 'like', '%' . $req->input('position') . '%');
         }
         if ($req->has('player')) {
             $mydata = $mydata->where('roster.name', 'like', '%' . $req->input('player') . '%');
+        }
+        if ($req->has('teamname')) {
+            $mydata = $mydata->where('team.name', 'like', '%' . $req->input('teamname') . '%');
         }
         if ($player_stats === "true") {
             // $mydata = $mydata->select("player_totals.*");
@@ -65,9 +69,12 @@ class ExportController extends Controller
             header('Content-type: application/json');
             echo ($mydata);
         } else if ($export_type == "xml") {
+            // return $mydata;
+
             header("Content-Type: text/xml;");
             $xml = new \SimpleXMLElement('<?xml version="1.0" encoding="UTF-8" ?><rootTag/>');
             Array2XML::to_xml($xml, json_decode($mydata, true));
+            // echo $xml;
             print $xml->asXML();
         }
     }

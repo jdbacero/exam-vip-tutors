@@ -25,15 +25,15 @@ class Array2XML extends ServiceProvider
         foreach ($data as $key => $value) {
             if (is_array($value)) {
                 // print_r($key);
-                $new_object = $object->addChild('data' . $key);
+                $new_object = $object->addChild(htmlspecialchars('data' . $key));
                 self::to_xml($new_object, $value);
             } else {
                 // if the key is an integer, it needs text with it to actually work.
                 if ($key != 0 && is_numeric($key[0])) {
-                    $key = "key_$key";
+                    $key = htmlspecialchars("key_$key");
                 }
 
-                $object->addChild($key, $value);
+                $object->addChild(htmlspecialchars($key), htmlspecialchars($value));
             }
         }
     }
