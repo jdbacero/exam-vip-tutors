@@ -14,43 +14,54 @@
     <style>
         thead input {
         width: 100%;
-    }
+        }
+        body, html {
+    height:100%;
+}
+
+        body {
+            min-height: 100%;
+            overflow-x: none;
+        }
     </style>
     @vite('resources/css/app.css')
 </head>
 <body>
-    
-    <table id="table_id" class="display">
-        <thead>
-            <tr class="text-center">
-                <th>Name</th>
-                <th>Position</th>
-                <th class="">Team</th>
-                <th class="disabled">View</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-        <tfoot>
-            <tr class="text-center">
-                <th>Name</th>
-                <th>Position</th>
-                <th class="">Team</th>
-                <th>View</th>
-            </tr>
-        </tfoot>
-    </table>
-    <div class="flex items-center">
-        <input id="link-player" name="playerstats" type="checkbox" value="true" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-        <label for="link-player" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 pr-10">Player Stats</label>
-        <input id="link-team" name="team" type="checkbox" value="true" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-        <label for="link-team" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300  pr-10">Team</label>.
-        <input id="link-roster" name="rosterView" type="checkbox" value="true" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-        <label for="link-roster" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300  pr-10">Roster</label>
-        <button class="view btn border-primary md:border-2 hover:bg-primary hover:text-white transition ease-out duration-500 download mr-10" value="csv">CSV</button>
-        <button class="view btn border-primary md:border-2 hover:bg-primary hover:text-white transition ease-out duration-500 download mr-10" value="xml">XML</button>
-        <button class="view btn border-primary md:border-2 hover:bg-primary hover:text-white transition ease-out duration-500 download mr-10" value="json">JSON</button>
-    </div>
+    <div class="grid  md:grid-cols-3 lg:grid-cols-6 ml-10 mr-10 mt-10">
+        <div class="lg:col-span-6 md:cols-span-3 sm:cols-span-1">
+            <table id="table_id" class="display">
+                <thead>
+                    <tr class="text-center">
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th class="">Team</th>
+                        <th class="disabled">View</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot>
+                    <tr class="text-center">
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th class="">Team</th>
+                        <th>View</th>
+                    </tr>
+                </tfoot>
+            </table>
+            </div>            
+            <div class="flex items-center">
+                <input id="link-player" name="playerstats" type="checkbox" value="true" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="link-player" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 pr-10">Player Stats</label>
+                <input id="link-team" name="team" type="checkbox" value="true" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="link-team" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300  pr-10">Team</label>.
+                <input id="link-roster" name="rosterView" type="checkbox" value="true" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="link-roster" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300  pr-10">Roster</label>
+                <button class="view btn border-primary md:border-2 hover:bg-primary hover:text-white transition ease-out duration-500 download mr-10" value="csv">CSV</button>
+                <button class="view btn border-primary md:border-2 hover:bg-primary hover:text-white transition ease-out duration-500 download mr-10" value="xml">XML</button>
+                <button class="view btn border-primary md:border-2 hover:bg-primary hover:text-white transition ease-out duration-500 download mr-10" value="json">JSON</button>
+            </div>
+        </div>
 
 
       <div id="playerprofile" class="hidden">
